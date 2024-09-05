@@ -1,6 +1,7 @@
 import styles from './CityItem.module.css';
 
 // функция для форматирования даты
+// через встроенный Intl.DateTimeFormat
 const formatDate = (date) =>
     new Intl.DateTimeFormat('en', {
         day: 'numeric',
