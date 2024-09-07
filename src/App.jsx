@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 
 import Homepage from './pages/Homepage';
 import Product from './pages/Product';
@@ -44,12 +44,10 @@ function App() {
                 <Route path="pricing" element={<Pricing />} />
                 <Route path="login" element={<Login />} />-
                 <Route path="app" element={<AppLayout />}>
-                    <Route
-                        index
-                        element={
-                            <CityList cities={cities} isLoading={isLoading} />
-                        }
-                    />
+                    {/* Используем компонент Navigate (из 'react-router-dom') для перехода при нажатии на кнопку 'start tracking now' сразу к адресу 'app/cities' и подсвечивания кнопки 'cities' а не просто к адресу 'app'.
+                    Добавляем к компоненту Navigate 'replace' чтобы можно было возвращаться назад на предыдущую страницу
+                    */}
+                    <Route index element={<Navigate to="cities" replace />} />
                     <Route
                         path="cities"
                         element={
