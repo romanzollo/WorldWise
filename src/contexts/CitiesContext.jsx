@@ -2,7 +2,7 @@ import { createContext, useState, useEffect } from 'react';
 
 const BASE_URL = 'http://localhost:9000';
 
-const CitiesContext = createContext();
+export const CitiesContext = createContext();
 
 function CitiesProvider({ children }) {
     const [cities, setCities] = useState([]);
