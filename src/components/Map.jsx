@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import {
     MapContainer,
     TileLayer,
@@ -8,16 +8,16 @@ import {
     useMap,
     useMapEvents,
 } from 'react-leaflet';
+
 import { useCities } from '../hooks/useCities';
 import { useGeolocation } from '../hooks/useGeolocation';
-
+import { useUrlPosition } from '../hooks/useUrlPosition';
 import Button from './Button';
 
 import styles from './Map.module.css';
 
 function Map() {
     const { cities } = useCities();
-    const [searchParams] = useSearchParams();
     const [mapPosition, setMapPosition] = useState({ lat: 40, lng: 0 });
     const {
         isLoading: isLoadingPosition,
@@ -25,8 +25,8 @@ function Map() {
         getPosition,
     } = useGeolocation();
 
-    const mapLat = searchParams.get('lat');
-    const mapLng = searchParams.get('lng');
+    // достаем данные из URL через кастом хук useUrlPosition
+    const [mapLat, mapLng] = useUrlPosition();
 
     // при первом рендере устанавливаем позицию карты
     // и в дальнейшем меняем ее при изменении параметров URL(mapLat, mapLng)
