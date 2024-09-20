@@ -9,17 +9,24 @@ import {
     useMapEvents,
 } from 'react-leaflet';
 import { useCities } from '../hooks/useCities';
+import { useGeolocation } from '../hooks/useGeolocation';
+
+import Button from './Button';
 
 import styles from './Map.module.css';
 
 function Map() {
+    const { cities } = useCities();
     const [searchParams] = useSearchParams();
+    const [mapPosition, setMapPosition] = useState({ lat: 40, lng: 0 });
+    const {
+        isLoading: isLoadingPosition,
+        position: geolocationPosition,
+        getPosition,
+    } = useGeolocation();
+
     const mapLat = searchParams.get('lat');
     const mapLng = searchParams.get('lng');
-
-    const { cities } = useCities();
-
-    const [mapPosition, setMapPosition] = useState({ lat: 40, lng: 0 });
 
     // при первом рендере устанавливаем позицию карты
     // и в дальнейшем меняем ее при изменении параметров URL(mapLat, mapLng)
@@ -27,8 +34,19 @@ function Map() {
         if (mapLat && mapLng) setMapPosition([mapLat, mapLng]);
     }, [mapLat, mapLng]);
 
+    // синхронизируем позицию карты при изменении позиции геолокации
+    useEffect(() => {
+        if (geolocationPosition)
+            setMapPosition([geolocationPosition.lat, geolocationPosition.lng]);
+    }, [geolocationPosition]);
+
     return (
         <div className={styles.mapContainer}>
+            {!geolocationPosition && (
+                <Button type="position" onClick={getPosition}>
+                    {isLoadingPosition ? 'Loading...' : 'Get your position'}
+                </Button>
+            )}
             <MapContainer
                 className={styles.map}
                 center={mapPosition}
