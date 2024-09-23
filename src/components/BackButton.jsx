@@ -9,6 +9,9 @@ function BackButton() {
         <Button
             type="back"
             onClick={(e) => {
+                // отменяем стандартное поведение браузера
+                // в том числе и для того чтобы при нажатии этой кнопки в форме
+                // форма не отправляла submit
                 e.preventDefault();
 
                 navigate(-1);

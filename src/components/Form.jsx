@@ -1,11 +1,15 @@
 import { useEffect, useState } from 'react';
+import DatePicker from 'react-datepicker';
 
 import { useUrlPosition } from '../hooks/useUrlPosition';
+import { useCities } from '../hooks/useCities';
+import { useNavigate } from 'react-router-dom';
 import Button from './Button';
 import BackButton from './BackButton';
 import Message from './Message';
 import Spinner from './Spinner';
 
+import 'react-datepicker/dist/react-datepicker.css';
 import styles from './Form.module.css';
 
 // конвертируем код страны в емодзи
@@ -20,6 +24,13 @@ export function convertToEmoji(countryCode) {
 const BASE_URL = 'https://api.bigdatacloud.net/data/reverse-geocode-client';
 
 function Form() {
+    // достаем данные из URL через кастом хук useUrlPosition
+    const [lat, lng] = useUrlPosition();
+    // достаем функцию для создания города из контекста CitiesContext и состояние загрузки
+    const { createCity, isLoading } = useCities();
+    // навигация
+    const navigate = useNavigate();
+
     const [isLoadingGeocoding, setIsLoadingGeocoding] = useState(false);
     const [cityName, setCityName] = useState(''); // город
     const [country, setCountry] = useState(''); // страна
@@ -28,10 +39,10 @@ function Form() {
     const [notes, setNotes] = useState('');
     const [geocodingError, setGeocodingError] = useState('');
 
-    // достаем данные из URL через кастом хук useUrlPosition
-    const [lat, lng] = useUrlPosition();
-
     useEffect(() => {
+        // если нет координат, ничего не делаем
+        if (!lat && !lng) return;
+
         async function fetchCityData() {
             try {
                 setIsLoadingGeocoding(true);
@@ -62,14 +73,42 @@ function Form() {
         fetchCityData();
     }, [lat, lng]);
 
+    // делаем функцию асинхронной
+    // чтобы navigate срабатывал только после успешного создания города
+    async function handleSubmit(e) {
+        e.preventDefault();
+
+        if (!cityName || !date) return;
+
+        // формируем новый город
+        const newCity = {
+            cityName,
+            country,
+            emoji,
+            date,
+            notes,
+            position: { lat, lng },
+        };
+
+        // создаем новый город
+        await createCity(newCity);
+        navigate('/app/cities');
+    }
+
     // если данные загружаются, показываем компонент Spinner
     if (isLoadingGeocoding) return <Spinner />;
+
+    // если нет координат, показываем компонент Message
+    if (!lat && !lng) return <Message message="Click somewhere on the map" />;
 
     // если есть ошибка, показываем ее через компонент Message
     if (geocodingError) return <Message message={geocodingError} />;
 
     return (
-        <form className={styles.form}>
+        <form
+            className={`${styles.form} ${isLoading ? styles.loading : ''}`}
+            onSubmit={handleSubmit}
+        >
             <div className={styles.row}>
                 <label htmlFor="cityName">City name</label>
                 <input
@@ -82,10 +121,14 @@ function Form() {
 
             <div className={styles.row}>
                 <label htmlFor="date">When did you go to {cityName}?</label>
-                <input
+
+                {/* добавляем кастомный компонент DatePicker
+                для выбора даты */}
+                <DatePicker
                     id="date"
-                    onChange={(e) => setDate(e.target.value)}
-                    value={date}
+                    selected={date}
+                    onChange={(data) => setDate(data)}
+                    dateFormat="dd.MM.yyyy"
                 />
             </div>
 
