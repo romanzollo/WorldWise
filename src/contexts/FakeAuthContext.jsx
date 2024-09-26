@@ -18,27 +18,32 @@ function reducer(state, action) {
     switch (action.type) {
         case 'login':
             return {
+                // все равно копируем весь state так как в будущем может быть больше переменных состояния
                 ...state,
                 user: action.payload,
                 isAuthenticated: true,
             };
+
         case 'logout':
             return {
+                // все равно копируем весь state так как в будущем может быть больше переменных состояния
                 ...state,
                 user: null,
                 isAuthenticated: false,
             };
+
         default:
             throw new Error('Unknown action');
     }
 }
 
 function AuthProvider({ children }) {
-    const [{ user, isAuthenticated }, dispatch] = useReducer({
+    const [{ user, isAuthenticated }, dispatch] = useReducer(
         reducer,
-        initialState,
-    });
+        initialState
+    );
 
+    // функция входа в аккаунт
     function login(email, password) {
         if (email === FAKE_USER.email && password === FAKE_USER.password) {
             dispatch({
@@ -48,6 +53,7 @@ function AuthProvider({ children }) {
         }
     }
 
+    // функция выхода
     function logout() {
         dispatch({ type: 'logout' });
     }
