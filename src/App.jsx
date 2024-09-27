@@ -12,6 +12,7 @@ import City from './components/City';
 import Form from './components/Form';
 import { CitiesProvider } from './contexts/CitiesContext';
 import { AuthProvider } from './contexts/FakeAuthContext';
+import ProtectedRoute from './pages/ProtectedRoute';
 
 function App() {
     return (
@@ -23,7 +24,15 @@ function App() {
                         <Route path="product" element={<Product />} />
                         <Route path="pricing" element={<Pricing />} />
                         <Route path="login" element={<Login />} />-
-                        <Route path="app" element={<AppLayout />}>
+                        <Route
+                            path="app"
+                            element={
+                                /* защита от неавторизованных пользователей */
+                                <ProtectedRoute>
+                                    <AppLayout />
+                                </ProtectedRoute>
+                            }
+                        >
                             {/* Используем компонент Navigate (из 'react-router-dom') для перехода при нажатии на кнопку 'start tracking now' сразу к адресу 'app/cities' и подсвечивания кнопки 'cities' а не просто к адресу 'app'.
                     Добавляем к компоненту Navigate 'replace' чтобы можно было возвращаться назад на предыдущую страницу
                     */}
