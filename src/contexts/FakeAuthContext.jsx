@@ -9,11 +9,14 @@ const FAKE_USER = {
 
 const AuthContext = createContext();
 
+// initial state for the reducer
 const initialState = {
     user: null,
     isAuthenticated: false,
 };
 
+// контролируем состояние пользователя через reducer для удобства т.к. в состоянии несколько переменных
+// но можно и через useState
 function reducer(state, action) {
     switch (action.type) {
         case 'login':
@@ -38,6 +41,7 @@ function reducer(state, action) {
 }
 
 function AuthProvider({ children }) {
+    // передаем состояние и функцию изменения(dispatch) через reducer
     const [{ user, isAuthenticated }, dispatch] = useReducer(
         reducer,
         initialState
