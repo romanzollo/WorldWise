@@ -23,6 +23,54 @@
         "lng": "2.3469543457031254"
       },
       "id": 98443199
+    },
+    {
+      "cityName": "Tallinn",
+      "country": "Estonia",
+      "emoji": "🇪🇪",
+      "date": "2024-10-03T20:17:49.878Z",
+      "notes": "Great!!!",
+      "position": {
+        "lat": "59.405957115062684",
+        "lng": "24.741210937500004"
+      },
+      "id": 98443200
+    },
+    {
+      "cityName": "Saint Petersburg",
+      "country": "Russian Federation (the)",
+      "emoji": "🇷🇺",
+      "date": "2024-10-03T20:18:20.651Z",
+      "notes": "",
+      "position": {
+        "lat": "59.877911874831156",
+        "lng": "30.388183593750004"
+      },
+      "id": 98443201
+    },
+    {
+      "cityName": "La Romana",
+      "country": "Dominican Republic (the)",
+      "emoji": "🇩🇴",
+      "date": "2024-10-03T20:19:10.429Z",
+      "notes": "Nice Trip😍",
+      "position": {
+        "lat": "18.42489620284244",
+        "lng": "-68.91586303710939"
+      },
+      "id": 98443202
+    },
+    {
+      "cityName": "Kaliningrad",
+      "country": "Russian Federation (the)",
+      "emoji": "🇷🇺",
+      "date": "2024-10-03T20:20:47.971Z",
+      "notes": "",
+      "position": {
+        "lat": "54.702407731003376",
+        "lng": "20.5279541015625"
+      },
+      "id": 98443203
     }
   ]
 }
