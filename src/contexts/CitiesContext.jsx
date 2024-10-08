@@ -1,6 +1,8 @@
 import { createContext, useCallback, useEffect, useReducer } from 'react';
 
-const BASE_URL = 'http://localhost:9000';
+// DEV ONLY
+// const BASE_URL = 'http://localhost:9000';
+const BASE_URL = 'https://json-server-vercel-six-roan.vercel.app';
 
 export const CitiesContext = createContext();
 
