@@ -1,19 +1,40 @@
 .countryItem {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 0.2rem;
 
-  font-size: 1.7rem;
-  font-weight: 600;
+    font-size: 1.7rem;
+    font-weight: 600;
 
-  background-color: var(--color-dark--2);
-  border-radius: 7px;
-  padding: 1rem 2rem;
-  border-left: 5px solid var(--color-brand--1);
+    background-color: var(--color-dark--2);
+    border-radius: 7px;
+    padding: 1rem 2rem;
+    border-left: 5px solid var(--color-brand--1);
 }
 
 .countryItem span:first-child {
-  font-size: 3rem;
-  line-height: 1;
+    font-size: 3rem;
+    line-height: 1;
 }
+
+@media screen and (max-width: 700px) {
+    .countryItem {
+        font-size: 1.4rem;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .countryItem {
+        font-size: 1.2rem;
+        max-width: 300px;
+        width: 100%;
+        padding: 0.5rem 1rem;
+    }
+}
+
+/* font-size: 1.2rem;
+    font-weight: 600;
+    text-align: center; */

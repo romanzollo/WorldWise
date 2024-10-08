@@ -1,34 +1,105 @@
 .product {
-  margin: 2.5rem;
-  padding: 2.5rem 5rem;
-  background-color: var(--color-dark--1);
-  min-height: calc(100vh - 5rem);
+    margin: 2.5rem;
+    padding: 2.5rem 5rem;
+    background-color: var(--color-dark--1);
+    min-height: calc(100vh - 5rem);
 }
 
 .product section {
-  width: clamp(80rem, 80%, 90rem);
-  margin: 6rem auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 7rem;
-  align-items: center;
+    width: clamp(80rem, 80%, 90rem);
+    margin: 6rem auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 7rem;
+    align-items: center;
 }
 
 .product img {
-  width: 100%;
+    width: 100%;
 }
 
 .product h2 {
-  font-size: 4rem;
-  line-height: 1.2;
-  margin-bottom: 3rem;
+    font-size: 4rem;
+    line-height: 1.2;
+    margin-bottom: 3rem;
 }
 
 .product p {
-  font-size: 1.6rem;
-  margin-bottom: 2rem;
+    font-size: 1.6rem;
+    margin-bottom: 2rem;
 }
 
 .product section a {
-  margin-top: 2rem;
+    margin-top: 2rem;
+}
+
+@media screen and (max-width: 1000px) {
+    .product section {
+        width: 100%;
+        margin: 6rem auto;
+        grid-template-columns: minmax(150px, auto) minmax(150px, auto);
+        gap: 5rem;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .product section {
+        width: 100%;
+        margin: 5rem auto;
+        grid-template-columns: 1fr;
+        gap: 5rem;
+    }
+
+    .product img {
+        width: 100%;
+        max-width: 400px;
+        object-fit: cover;
+        grid-row: 1 / 2;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .product h2 {
+        font-size: 3.5rem;
+        line-height: 1.2;
+        margin-bottom: 2.5rem;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .product {
+        margin: 1.8rem;
+        padding: 1rem 3rem;
+    }
+    .product section {
+        grid-template-columns: minmax(250px, 300px);
+    }
+
+    .product h2 {
+        font-size: 2.7rem;
+        line-height: 1.5;
+        margin-bottom: 2rem;
+    }
+
+    .product p {
+        font-size: 1.4rem;
+        margin-bottom: 1rem;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .product {
+        margin: 1.3rem;
+        padding: 1rem 3rem;
+    }
+
+    .product h2 {
+        font-size: 2.5rem;
+        line-height: 1.5;
+        margin-bottom: 2rem;
+    }
+
+    .product p {
+        font-size: 1.2rem;
+    }
 }

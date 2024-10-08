@@ -10,3 +10,33 @@
     align-content: start;
     gap: 1.6rem;
 }
+
+@media screen and (max-width: 1000px) {
+    .countryList {
+        height: auto;
+        gap: 1.6rem;
+        margin-bottom: 15px;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .countryList {
+        gap: 1.2rem;
+        margin-bottom: 10px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .countryList {
+        gap: 0.9rem;
+        margin-bottom: 10px;
+        /* grid-template-rows: repeat(5, minmax(80px, 1fr)); */
+    }
+}
+@media screen and (max-width: 400px) {
+    .countryList {
+        gap: 0.7rem;
+        /* grid-template-columns: 1fr; */
+        /* justify-items: center; */
+    }
+}

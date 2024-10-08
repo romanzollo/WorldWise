@@ -68,3 +68,25 @@ input:focus {
     padding: 1rem 3rem;
     border-radius: 5px;
 }
+
+@media screen and (max-width: 500px) {
+    .cta:link,
+    .cta:visited {
+        font-size: 1.4rem;
+        font-weight: 600;
+        padding: 1rem 3rem;
+    }
+
+    input,
+    textarea,
+    label {
+        font-size: 1.4rem;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .cta:link,
+    .cta:visited {
+        font-size: 1.2rem;
+    }
+}

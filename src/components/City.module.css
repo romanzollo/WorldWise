@@ -49,3 +49,39 @@
     font-size: 1.6rem;
     color: var(--color-brand--1);
 }
+
+@media screen and (max-width: 1000px) {
+    .city {
+        padding: 1.5rem;
+
+        gap: 1rem;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .city h6 {
+        font-size: 1.1rem;
+    }
+
+    .city h3 {
+        font-size: 1.5rem;
+        gap: 1rem;
+    }
+
+    .city h3 span {
+        font-size: 2.5rem;
+    }
+
+    .city p {
+        font-size: 1.4rem;
+    }
+
+    .city a:link,
+    .city a:visited {
+        font-size: 1.4rem;
+    }
+
+    .button {
+        margin-top: 1rem;
+    }
+}
