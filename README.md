@@ -1,8 +1,25 @@
-# React + Vite
+# WorldWise App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<img src="screenshot-1.png" width="1200px"/>
+<img src="screenshot-2.png" width="1000px"/>
+<img src="screenshot-3.png" width="1000px"/>
+<img src="screenshot-4.png" width="1000px"/>
 
-Currently, two official plugins are available:
+## Tools used:
 
--   [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
--   [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+-   Vite
+-   React 18
+-   React Router 6
+-   Leaflet library
+-   Context + useReducer
+-   Json Server
+-   Navigate
+-   useNavigate
+-   Spliting Components with React Lazy
+-   React Memo (memo, useMemo, useCallback)
+-   React Custom Hooks
+-   Geolocation API
+-   React DatePicker
+-   Fake Auth
+
+[Link to project](https://world-wise-nine-neon.vercel.app/)
