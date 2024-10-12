@@ -1,9 +1,9 @@
 # WorldWise App
 
 <img src="screenshot-1.png" width="1200px"/>
-<img src="screenshot-2.png" width="1000px"/>
-<img src="screenshot-3.png" width="1000px"/>
-<img src="screenshot-4.png" width="1000px"/>
+<img src="screenshot-2.png" width="800px"/>
+<img src="screenshot-3.png" width="800px"/>
+<img src="screenshot-4.png" width="800px"/>
 
 ## Tools used:
 
