@@ -16,7 +16,7 @@ import Button from './Button';
 
 import styles from './Map.module.css';
 
-function Map() {
+function Map({ elRef }) {
     const { cities } = useCities();
     const [mapPosition, setMapPosition] = useState({ lat: 40, lng: 0 });
     const {
@@ -71,7 +71,7 @@ function Map() {
 
                 {/* используем наш пользовательский компонент */}
                 <ChangeCenter position={mapPosition} />
-                <DetectClick />
+                <DetectClick elRef={elRef} />
             </MapContainer>
         </div>
     );
@@ -92,14 +92,17 @@ function ChangeCenter({ position }) {
 }
 
 // создаем пользовательский компонент для отслеживания нажатия на карте
-function DetectClick() {
+function DetectClick({ elRef }) {
     // навигация
     const navigate = useNavigate();
 
     // используем хук leaflet
     useMapEvents({
         // достаем данные из объекта события и передаем их в navigate при клике на карте
-        click: (e) => navigate(`form?lat=${e.latlng.lat}&lng=${e.latlng.lng}`),
+        click: (e) => {
+            navigate(`form?lat=${e.latlng.lat}&lng=${e.latlng.lng}`);
+            elRef?.current?.scrollIntoView({ behavior: 'smooth' });
+        },
     });
 }
 

@@ -3,7 +3,7 @@ import DatePicker from 'react-datepicker';
 
 import { useUrlPosition } from '../hooks/useUrlPosition';
 import { useCities } from '../hooks/useCities';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useOutletContext } from 'react-router-dom';
 import Button from './Button';
 import BackButton from './BackButton';
 import Message from './Message';
@@ -24,6 +24,9 @@ export function convertToEmoji(countryCode) {
 const BASE_URL = 'https://api.bigdatacloud.net/data/reverse-geocode-client';
 
 function Form() {
+    // получаем ссылку на контейнер формы
+    const { elRef } = useOutletContext();
+
     // достаем данные из URL через кастом хук useUrlPosition
     const [lat, lng] = useUrlPosition();
     // достаем функцию для создания города из контекста CitiesContext и состояние загрузки
@@ -108,6 +111,7 @@ function Form() {
         <form
             className={`${styles.form} ${isLoading ? styles.loading : ''}`}
             onSubmit={handleSubmit}
+            ref={elRef}
         >
             <div className={styles.row}>
                 <label htmlFor="cityName">City name</label>

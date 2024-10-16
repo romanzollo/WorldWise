@@ -5,13 +5,13 @@ import Logo from './Logo';
 
 import styles from './Sidebar.module.css';
 
-function Sidebar() {
+function Sidebar({ elRef }) {
     return (
         <div className={styles.sidebar}>
             <Logo />
             <AppNav />
 
-            <Outlet />
+            <Outlet context={{ elRef }} />
 
             <Footer />
         </div>
