@@ -23,6 +23,8 @@ const AppLayout = lazy(() => import('./pages/AppLayout'));
 const PageNotFound = lazy(() => import('./pages/PageNotFound'));
 
 function App() {
+    console.log(import.meta.env.VITE_API_URL);
+
     return (
         <AuthProvider>
             <CitiesProvider>
